@@ -1,0 +1,36 @@
+<h1>Product list</h1>
+<div>
+  <button class="btn btn-primary" (click)="showCreate()">
+    {{isCreated ? 'Hide' : 'Create'}}
+  </button>
+</div>
+<div>
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Image</th>
+    </tr>
+    <tr *ngFor="let product of products; index as count">
+      <td>{{count + 1}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.description}}</td>
+      <td>
+        <img [src]="product.imageUrl" width="100"/>
+      </td>
+      <td>
+        <button class="btn btn-primary" (click)="changeButtonUpdate(product)">
+          Edit
+        </button>
+        <button class="btn btn-danger" (click)="delete(product)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+<app-product-create (eventEmitter)="addProduct($event)" *ngIf="isCreated"></app-product-create>
+<app-product-update (eventEmitter)="updateProduct($event)" [product]="products[index]" *ngIf="isUpdated"></app-product-update>

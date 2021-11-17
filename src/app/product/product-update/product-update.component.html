@@ -1,0 +1,29 @@
+<h1>{{title}}</h1>
+<form #productUpdateForm='ngForm' (ngSubmit)="submitUpdate(productUpdateForm)">
+  <table>
+    <input type="text" name="id"  [ngModel]="product.id">
+    <tr>
+      <td>Name</td>
+      <td><input [ngModel]="product.name" placeholder="name" name="name"></td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td><input [ngModel]="product.price" placeholder="price" name="price"></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><input [ngModel]="product.description" placeholder="description" name="description"></td>
+    </tr>
+    <tr>
+      <td>Image URL</td>
+      <td><input [ngModel]="product.imageUrl" placeholder="imageUrl" name="imageUrl"></td>
+    </tr>
+    <tr>
+      <td>
+        <button>Update</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
